@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 
 export default class Writer extends Component {
 	state = {
 		writer: {},
 		showEditForm: false,
-		redirectToHome: false
+		redirectToAllWriters: false
 	};
 
 	componentDidMount() {
@@ -38,7 +39,20 @@ export default class Writer extends Component {
 			});
 	};
 
+	handleDelete = () => {
+		if (window.confirm("Are you sure you want to delete?")) {
+			axios
+				.delete(`/api/writers/${this.props.match.params.writerId}`)
+				.then(() => {
+					this.setState({ redirectToAllWriters: true });
+				});
+		}
+	};
+
 	render() {
+		if (this.state.redirectToAllWriters) {
+			return <Redirect to='/writers' />;
+		}
 		return this.state.showEditForm ? (
 			<div className='edit-writer-form'>
 				<button onClick={this.handleToggleEditForm}>Back to Writer</button>
@@ -74,6 +88,16 @@ export default class Writer extends Component {
 						/>
 					</div>
 					<div>
+						<label htmlFor='writer-email'>Email: </label>
+						<input
+							type='email'
+							id='writer-email'
+							name='email'
+							value={this.state.writer.email}
+							onChange={this.handleInputChange}
+						/>
+					</div>
+					<div>
 						<input type='submit' value='Edit Writer' />
 					</div>
 				</form>
@@ -81,15 +105,19 @@ export default class Writer extends Component {
 		) : (
 			<div className='single-writer'>
 				<h2>{this.state.writer.name}</h2>
-				<img
-					src={this.state.writer.imageLink ? this.state.writer.imageLink : null}
-					alt={this.state.writer.name}
-				/>
+				{this.state.writer.imageLink ? (
+					<img src={this.state.writer.imageLink} alt={this.state.writer.name} />
+				) : null}
 				<p>
 					<strong>Bio: </strong>
 					{this.state.writer.bio}
 				</p>
+				<p>
+					<strong>Email: </strong>
+					{this.state.writer.email}
+				</p>
 				<button onClick={this.handleToggleEditForm}>Edit Writer</button>
+				<button onClick={this.handleDelete}>Delete Writer</button>
 			</div>
 		);
 	}

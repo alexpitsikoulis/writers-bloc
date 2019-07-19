@@ -5,6 +5,7 @@ const WriterSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
+	email: String,
 	imageLink: String,
 	bio: String
 });
