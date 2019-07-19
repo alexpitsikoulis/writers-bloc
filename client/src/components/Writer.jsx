@@ -105,6 +105,9 @@ export default class Writer extends Component {
 		) : (
 			<div className='single-writer'>
 				<h2>{this.state.writer.name}</h2>
+				<div>
+					<Link to='/writers'>Back to All Writers</Link>
+				</div>
 				{this.state.writer.imageLink ? (
 					<img src={this.state.writer.imageLink} alt={this.state.writer.name} />
 				) : null}
