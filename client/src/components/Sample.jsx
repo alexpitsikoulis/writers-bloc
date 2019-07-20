@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 
 export default class Sample extends Component {
 	state = {
 		sample: {},
 		showEditForm: false,
-		redirectToHome: false
+		redirectToWriterSamples: false
 	};
 
 	componentDidMount() {
@@ -46,7 +47,24 @@ export default class Sample extends Component {
 			});
 	};
 
+	handleDelete = () => {
+		axios
+			.delete(
+				`/api/writers/${this.props.match.params.writerId}/samples/${
+					this.props.match.params.sampleId
+				}`
+			)
+			.then(() => {
+				this.setState({ redirectToWriterSamples: true });
+			});
+	};
+
 	render() {
+		if (this.state.redirectToWriterSamples) {
+			return (
+				<Redirect to={`/writers/${this.props.match.params.writerId}/samples`} />
+			);
+		}
 		return (
 			<div>
 				{this.state.showEditForm ? (
@@ -96,6 +114,7 @@ export default class Sample extends Component {
 							<h4>{this.state.sample.typeOfWriting}</h4>
 							<p>{this.state.sample.body}</p>
 							<button onClick={this.handleToggleEditForm}>edit sample</button>
+							<button onClick={this.handleDelete}>delete sample</button>
 						</div>
 					</div>
 				)}
