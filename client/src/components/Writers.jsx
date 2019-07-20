@@ -56,10 +56,10 @@ export default class Writers extends Component {
 			<div className='all-writers'>
 				{this.state.showNewForm ? (
 					<div className='new-writer-form'>
-						<button onClick={this.handleToggleNewForm}>Back to Writers</button>
+						<button onClick={this.handleToggleNewForm}>back to writers</button>
 						<form onSubmit={this.handleSubmit}>
 							<div>
-								<label htmlFor='new-writer-name'>Name: </label>
+								<label htmlFor='new-writer-name'>name: </label>
 								<input
 									type='text'
 									id='new-writer-name'
@@ -69,7 +69,7 @@ export default class Writers extends Component {
 								/>
 							</div>
 							<div>
-								<label htmlFor='new-writer-email'>Email: </label>
+								<label htmlFor='new-writer-email'>email: </label>
 								<input
 									type='email'
 									id='new-writer-email'
@@ -79,7 +79,7 @@ export default class Writers extends Component {
 								/>
 							</div>
 							<div>
-								<label htmlFor='new-writer-bio'>Bio: </label>
+								<label htmlFor='new-writer-bio'>bio: </label>
 								<input
 									type='text'
 									id='new-writer-bio'
@@ -89,7 +89,7 @@ export default class Writers extends Component {
 								/>
 							</div>
 							<div>
-								<label htmlFor='new-writer-image-link'>Image Link: </label>
+								<label htmlFor='new-writer-image-link'>image link: </label>
 								<input
 									type='text'
 									id='new-writer-image-link'
@@ -99,15 +99,15 @@ export default class Writers extends Component {
 								/>
 							</div>
 							<div>
-								<input type='submit' value='Create New Writer' />
+								<input type='submit' value='create new writer' />
 							</div>
 						</form>
 					</div>
 				) : (
 					<div className='writers-list'>
-						<h2>All Writers</h2>
+						<h2>all writers</h2>
 						{writersList}
-						<button onClick={this.handleToggleNewForm}>Add New Writer</button>
+						<button onClick={this.handleToggleNewForm}>add new writer</button>
 					</div>
 				)}
 			</div>

@@ -3,11 +3,18 @@ const mongoose = require("./connection.js");
 const WriterSchema = new mongoose.Schema({
 	name: {
 		type: String,
-		required: true
+		required: true,
+		lowercase: true
 	},
-	email: String,
+	email: {
+		type: String,
+		lowercase: true
+	},
 	imageLink: String,
-	bio: String
+	bio: {
+		type: String,
+		lowercase: true
+	}
 });
 
 const WriterCollection = mongoose.model("Writer", WriterSchema);
