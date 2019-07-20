@@ -37,6 +37,29 @@ sampleRouter.post("/", (req, res) => {
 		});
 });
 
+sampleRouter.put("/:sampleId", (req, res) => {
+	req.body.writerId = req.params.writerId;
+	sampleApi
+		.editSample(req.params.sampleId, req.body)
+		.then(sample => {
+			res.json(sample);
+		})
+		.catch(error => {
+			res.send(error);
+		});
+});
+
+sampleRouter.delete("/:sampleId", (req, res) => {
+	sampleApi
+		.deleteSample(req.params.sampleId)
+		.then(sample => {
+			res.json(sample);
+		})
+		.catch(error => {
+			res.send(error);
+		});
+});
+
 module.exports = {
 	sampleRouter
 };

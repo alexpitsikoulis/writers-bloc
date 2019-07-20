@@ -31,8 +31,20 @@ function addSampleForWriter(sampleObject) {
 	return SampleCollection.create(sampleObject);
 }
 
+function editSample(sampleId, sampleObject) {
+	return SampleCollection.findByIdAndUpdate(sampleId, sampleObject, {
+		new: true
+	});
+}
+
+function deleteSample(sampleId) {
+	return SampleCollection.findByIdAndDelete(sampleId);
+}
+
 module.exports = {
 	getAllSamplesByWriterId,
 	getSingleSample,
-	addSampleForWriter
+	addSampleForWriter,
+	editSample,
+	deleteSample
 };
