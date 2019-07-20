@@ -23,11 +23,16 @@ function getAllSamplesByWriterId(writerId) {
 	return SampleCollection.find({ writerId: writerId });
 }
 
+function getSingleSample(sampleId) {
+	return SampleCollection.findById(sampleId);
+}
+
 function addSampleForWriter(sampleObject) {
 	return SampleCollection.create(sampleObject);
 }
 
 module.exports = {
 	getAllSamplesByWriterId,
+	getSingleSample,
 	addSampleForWriter
 };

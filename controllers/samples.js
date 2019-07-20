@@ -4,12 +4,21 @@ const writerApi = require("../models/writers");
 const sampleRouter = express.Router({ mergeParams: true });
 
 sampleRouter.get("/", (req, res) => {
-	writerApi
-		.getSingleWriter(req.params.writerId)
-		.then(writer => {
-			sampleApi.getAllSamplesByWriterId(writer._id).then(samples => {
-				res.json(samples);
-			});
+	sampleApi
+		.getAllSamplesByWriterId(req.params.writerId)
+		.then(samples => {
+			res.json(samples);
+		})
+		.catch(error => {
+			res.send(error);
+		});
+});
+
+sampleRouter.get("/:sampleId", (req, res) => {
+	sampleApi
+		.getSingleSample(req.params.sampleId)
+		.then(sample => {
+			res.json(sample);
 		})
 		.catch(error => {
 			res.send(error);
@@ -18,11 +27,8 @@ sampleRouter.get("/", (req, res) => {
 
 sampleRouter.post("/", (req, res) => {
 	req.body.writerId = req.params.writerId;
-	writerApi
-		.getSingleWriter(req.params.writer)
-		.then(() => {
-			sampleApi.addSampleForWriter(req.body);
-		})
+	sampleApi
+		.addSampleForWriter(req.body)
 		.then(sample => {
 			res.json(sample);
 		})
