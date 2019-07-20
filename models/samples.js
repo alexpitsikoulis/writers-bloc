@@ -14,15 +14,20 @@ const SampleSchema = new mongoose.Schema({
 		required: true
 	},
 	dateAdded: Date,
-	writerId: String
+	writerId: mongoose.Types.ObjectId
 });
 
 const SampleCollection = mongoose.model("Sample", SampleSchema);
 
 function getAllSamplesByWriterId(writerId) {
-	return SampleCollection.find();
+	return SampleCollection.find({ writerId: writerId });
+}
+
+function addSampleForWriter(sampleObject) {
+	return SampleCollection.create(sampleObject);
 }
 
 module.exports = {
-	getAllSamplesByWriterId
+	getAllSamplesByWriterId,
+	addSampleForWriter
 };

@@ -16,6 +16,21 @@ sampleRouter.get("/", (req, res) => {
 		});
 });
 
+sampleRouter.post("/", (req, res) => {
+	req.body.writerId = req.params.writerId;
+	writerApi
+		.getSingleWriter(req.params.writer)
+		.then(() => {
+			sampleApi.addSampleForWriter(req.body);
+		})
+		.then(sample => {
+			res.json(sample);
+		})
+		.catch(error => {
+			res.send(error);
+		});
+});
+
 module.exports = {
 	sampleRouter
 };
