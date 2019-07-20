@@ -13,7 +13,8 @@ const SampleSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	dateAdded: Date
+	dateAdded: Date,
+	writerId: String
 });
 
 const SampleCollection = mongoose.model("Sample", SampleSchema);
@@ -23,5 +24,5 @@ function getAllSamplesByWriterId(writerId) {
 }
 
 module.exports = {
-	getHelloWorldString
+	getAllSamplesByWriterId
 };
