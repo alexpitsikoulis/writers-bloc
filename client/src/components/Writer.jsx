@@ -124,6 +124,12 @@ export default class Writer extends Component {
 							<strong>email: </strong>
 							{this.state.writer.email}
 						</p>
+						<div>
+							<Link to={`/writers/${this.props.match.params.writerId}/samples`}>
+								{" "}
+								writing samples
+							</Link>
+						</div>
 						<button onClick={this.handleToggleEditForm}>edit writer</button>
 						<button onClick={this.handleDelete}>delete writer</button>
 					</div>

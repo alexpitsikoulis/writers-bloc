@@ -5,6 +5,7 @@ import Writer from "./components/Writer";
 import "./App.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Samples from "./components/Samples";
 
 function App() {
 	return (
@@ -12,8 +13,9 @@ function App() {
 			<Router>
 				<Route path='/' component={Header} />
 				<Switch>
-					<Route exact path='/writers' component={Writers} />
+					<Route path='/writers/:writerId/samples' component={Samples} />
 					<Route path='/writers/:writerId' component={Writer} />
+					<Route path='/writers' component={Writers} />
 				</Switch>
 				<Route path='/' component={Footer} />
 			</Router>
