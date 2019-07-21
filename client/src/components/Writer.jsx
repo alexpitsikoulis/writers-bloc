@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
+import ContactForm from "./ContactForm";
 
 export default class Writer extends Component {
 	state = {
@@ -132,6 +133,10 @@ export default class Writer extends Component {
 						</div>
 						<button onClick={this.handleToggleEditForm}>edit writer</button>
 						<button onClick={this.handleDelete}>delete writer</button>
+						<ContactForm
+							name={this.state.writer.name}
+							email={this.state.writer.email}
+						/>
 					</div>
 				)}
 			</div>
