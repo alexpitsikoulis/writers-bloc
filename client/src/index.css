@@ -6,6 +6,8 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	font-size: 2vw;
+	font-family: "Roboto Condensed", sans-serif;
+	background: steelblue;
 }
 
 code {
@@ -15,21 +17,33 @@ code {
 
 header {
 	height: 15vh;
-	background: olive;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-bottom: 5vh;
 }
 
 footer {
 	height: 10vh;
-	background: olive;
 	text-align: left;
 	display: flex;
 	margin-top: 5vh;
 }
 footer small {
 	margin: 2vw;
+}
+
+h1 {
+	font-size: 4em;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+}
+a:hover {
+	color: darkorange;
+	text-decoration: underline;
 }
 
 button {
@@ -60,4 +74,5 @@ button {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	width: 80vw;
 }

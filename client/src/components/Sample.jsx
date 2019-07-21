@@ -48,15 +48,17 @@ export default class Sample extends Component {
 	};
 
 	handleDelete = () => {
-		axios
-			.delete(
-				`/api/writers/${this.props.match.params.writerId}/samples/${
-					this.props.match.params.sampleId
-				}`
-			)
-			.then(() => {
-				this.setState({ redirectToWriterSamples: true });
-			});
+		if (window.confirm("Are you sure you want to delete this sample?")) {
+			axios
+				.delete(
+					`/api/writers/${this.props.match.params.writerId}/samples/${
+						this.props.match.params.sampleId
+					}`
+				)
+				.then(() => {
+					this.setState({ redirectToWriterSamples: true });
+				});
+		}
 	};
 
 	render() {
@@ -110,6 +112,9 @@ export default class Sample extends Component {
 				) : (
 					<div className='single-sample'>
 						<div>
+							<Link to={`/writers/${this.props.match.params.writerId}/samples`}>
+								back to all samples
+							</Link>
 							<h2>{this.state.sample.name}</h2>
 							<h4>{this.state.sample.typeOfWriting}</h4>
 							<p>{this.state.sample.body}</p>

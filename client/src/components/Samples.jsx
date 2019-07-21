@@ -107,6 +107,9 @@ export default class Samples extends Component {
 					</div>
 				) : (
 					<div className='all-samples'>
+						<Link to={`/writers/${this.props.match.params.writerId}`}>
+							back to writer
+						</Link>
 						<h2>writing samples</h2>
 						{samplesList}
 						<button onClick={this.handleToggleNewForm}>add new sample</button>

@@ -5,7 +5,9 @@ export default class Header extends Component {
 		return (
 			<div>
 				<header>
-					<h1>writer's bloc</h1>
+					<h1>
+						<a href='/'>writer's bloc</a>
+					</h1>
 				</header>
 			</div>
 		);
