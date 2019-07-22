@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import { Button } from "rebass";
+import SampleForm from "./SampleForm";
 
 export default class Sample extends Component {
 	state = {
@@ -86,49 +87,11 @@ export default class Sample extends Component {
 							fontSize='1vw;'>
 							back to sample
 						</Button>
-						<form onSubmit={this.handleSubmit}>
-							<div>
-								<label htmlFor='sample-name'>name: </label>
-								<input
-									type='text'
-									id='sample-name'
-									name='name'
-									value={this.state.sample.name}
-									onChange={this.handleInputChange}
-								/>
-							</div>
-							<div>
-								<label htmlFor='sample-type'>type of writing: </label>
-								<input
-									type='text'
-									id='sample-type'
-									name='typeOfWriting'
-									value={this.state.sample.typeOfWriting}
-									onChange={this.handleInputChange}
-								/>
-							</div>
-							<div>
-								<label htmlFor='sample-body'>body: </label>
-								<textarea
-									name='body'
-									id='sample-body'
-									cols='100'
-									rows='40'
-									value={this.state.sample.body}
-									onChange={this.handleInputChange}
-								/>
-							</div>
-							<div>
-								<Button
-									bg='white'
-									color='black'
-									margin='5px'
-									width='10vw;'
-									fontSize='1vw;'>
-									edit sample
-								</Button>
-							</div>
-						</form>
+						<SampleForm
+							sample={this.state.sample}
+							handleInputChange={this.handleInputChange}
+							handleSubmit={this.handleSubmit}
+						/>
 					</div>
 				) : (
 					<div className='single-sample'>

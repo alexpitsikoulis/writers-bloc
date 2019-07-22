@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Button } from "rebass";
+import SampleForm from "./SampleForm";
+import Sample from "./Sample";
 
 export default class Samples extends Component {
 	state = {
@@ -46,8 +48,11 @@ export default class Samples extends Component {
 				this.state.newSample
 			)
 			.then(() => {
-				this.setState({ showNewForm: false });
 				this.getSamples();
+				this.setState({
+					showNewForm: false,
+					newSample: { name: "", typeOfWriting: "", body: "" }
+				});
 			});
 	};
 
@@ -77,49 +82,11 @@ export default class Samples extends Component {
 							fontSize='0.9vw;'>
 							back to samples
 						</Button>
-						<form onSubmit={this.handleSubmit}>
-							<div>
-								<label htmlFor='new-sample-name'>name: </label>
-								<input
-									type='text'
-									id='new-sample-name'
-									name='name'
-									value={this.state.newSample.name}
-									onChange={this.handleInputChange}
-								/>
-							</div>
-							<div>
-								<label htmlFor='new-sample-type'>type of writing: </label>
-								<input
-									type='text'
-									id='new-sample-type'
-									name='typeOfWriting'
-									value={this.state.newSample.typeOfWriting}
-									onChange={this.handleInputChange}
-								/>
-							</div>
-							<div>
-								<label htmlFor='new-sample-body'>body: </label>
-								<textarea
-									name='body'
-									id='new-sample-body'
-									cols='100'
-									rows='40'
-									value={this.state.newSample.body}
-									onChange={this.handleInputChange}
-								/>
-							</div>
-							<div>
-								<Button
-									bg='white'
-									color='black'
-									margin='5px'
-									width='10vw;'
-									fontSize='0.8vw;'>
-									create new sample
-								</Button>
-							</div>
-						</form>
+						<SampleForm
+							newSample={this.state.newSample}
+							handleInputChange={this.handleInputChange}
+							handleSubmit={this.handleSubmit}
+						/>
 					</div>
 				) : (
 					<div className='all-samples'>
