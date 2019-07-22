@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
+import { Button } from "rebass";
 
 export default class Sample extends Component {
 	state = {
@@ -10,6 +11,10 @@ export default class Sample extends Component {
 	};
 
 	componentDidMount() {
+		this.getSample();
+	}
+
+	getSample = () => {
 		axios
 			.get(
 				`/api/writers/${this.props.match.params.writerId}/samples/${
@@ -19,9 +24,10 @@ export default class Sample extends Component {
 			.then(res => {
 				this.setState({ sample: res.data });
 			});
-	}
+	};
 
 	handleToggleEditForm = () => {
+		this.getSample();
 		this.setState(state => {
 			return { showEditForm: !state.showEditForm };
 		});
@@ -71,7 +77,15 @@ export default class Sample extends Component {
 			<div>
 				{this.state.showEditForm ? (
 					<div className='edit-sample-form'>
-						<button onClick={this.handleToggleEditForm}>back to sample</button>
+						<Button
+							onClick={this.handleToggleEditForm}
+							bg='white'
+							color='black'
+							margin='5px'
+							width='10vw;'
+							fontSize='1vw;'>
+							back to sample
+						</Button>
 						<form onSubmit={this.handleSubmit}>
 							<div>
 								<label htmlFor='sample-name'>name: </label>
@@ -105,7 +119,14 @@ export default class Sample extends Component {
 								/>
 							</div>
 							<div>
-								<input type='submit' value='edit sample' />
+								<Button
+									bg='white'
+									color='black'
+									margin='5px'
+									width='10vw;'
+									fontSize='1vw;'>
+									edit sample
+								</Button>
 							</div>
 						</form>
 					</div>
@@ -118,8 +139,24 @@ export default class Sample extends Component {
 							<h2>{this.state.sample.name}</h2>
 							<h4>{this.state.sample.typeOfWriting}</h4>
 							<p>{this.state.sample.body}</p>
-							<button onClick={this.handleToggleEditForm}>edit sample</button>
-							<button onClick={this.handleDelete}>delete sample</button>
+							<Button
+								onClick={this.handleToggleEditForm}
+								bg='white'
+								color='black'
+								margin='5px'
+								width='10vw;'
+								fontSize='1vw;'>
+								edit sample
+							</Button>
+							<Button
+								onClick={this.handleDelete}
+								bg='white'
+								color='black'
+								margin='5px'
+								width='10vw;'
+								fontSize='1vw;'>
+								delete sample
+							</Button>
 						</div>
 					</div>
 				)}

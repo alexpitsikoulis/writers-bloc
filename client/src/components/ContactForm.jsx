@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button } from "rebass";
 
 export default class ContactForm extends Component {
 	render() {
@@ -19,7 +20,14 @@ export default class ContactForm extends Component {
 						<textarea name='message' id='contact-message' cols='30' rows='10' />
 					</div>
 					<div>
-						<input type='submit' value='send message' />
+						<Button
+							bg='#4682b4'
+							color='white'
+							margin='5px'
+							width='10vw;'
+							fontSize='1vw;'>
+							send message
+						</Button>
 					</div>
 				</form>
 			</div>

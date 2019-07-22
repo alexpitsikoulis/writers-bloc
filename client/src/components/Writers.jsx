@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Button } from "rebass";
 
 export default class Writers extends Component {
 	state = {
@@ -56,7 +57,15 @@ export default class Writers extends Component {
 			<div className='all-writers'>
 				{this.state.showNewForm ? (
 					<div className='new-writer-form'>
-						<button onClick={this.handleToggleNewForm}>back to writers</button>
+						<Button
+							onClick={this.handleToggleNewForm}
+							bg='white'
+							color='black'
+							margin='5px'
+							width='10vw;'
+							fontSize='1vw;'>
+							back to writers
+						</Button>
 						<form onSubmit={this.handleSubmit}>
 							<div>
 								<label htmlFor='new-writer-name'>name: </label>
@@ -99,7 +108,14 @@ export default class Writers extends Component {
 								/>
 							</div>
 							<div>
-								<input type='submit' value='create new writer' />
+								<Button
+									bg='white'
+									color='black'
+									margin='5px'
+									width='10vw;'
+									fontSize='0.8vw;'>
+									create new writer
+								</Button>
 							</div>
 						</form>
 					</div>
@@ -107,7 +123,15 @@ export default class Writers extends Component {
 					<div className='writers-list'>
 						<h2>all writers</h2>
 						{writersList}
-						<button onClick={this.handleToggleNewForm}>add new writer</button>
+						<Button
+							onClick={this.handleToggleNewForm}
+							bg='white'
+							color='black'
+							margin='5px'
+							width='10vw;'
+							fontSize='1vw;'>
+							add new writer
+						</Button>
 					</div>
 				)}
 			</div>

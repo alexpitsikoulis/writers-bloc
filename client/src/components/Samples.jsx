@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Button } from "rebass";
 
 export default class Samples extends Component {
 	state = {
@@ -67,7 +68,15 @@ export default class Samples extends Component {
 			<div>
 				{this.state.showNewForm ? (
 					<div className='new-sample-form'>
-						<button onClick={this.handleToggleNewForm}>back to samples</button>
+						<Button
+							onClick={this.handleToggleNewForm}
+							bg='white'
+							color='black'
+							margin='5px'
+							width='10vw;'
+							fontSize='0.9vw;'>
+							back to samples
+						</Button>
 						<form onSubmit={this.handleSubmit}>
 							<div>
 								<label htmlFor='new-sample-name'>name: </label>
@@ -101,7 +110,14 @@ export default class Samples extends Component {
 								/>
 							</div>
 							<div>
-								<input type='submit' value='create new sample' />
+								<Button
+									bg='white'
+									color='black'
+									margin='5px'
+									width='10vw;'
+									fontSize='0.8vw;'>
+									create new sample
+								</Button>
 							</div>
 						</form>
 					</div>
@@ -112,7 +128,15 @@ export default class Samples extends Component {
 						</Link>
 						<h2>writing samples</h2>
 						{samplesList}
-						<button onClick={this.handleToggleNewForm}>add new sample</button>
+						<Button
+							onClick={this.handleToggleNewForm}
+							bg='white'
+							color='black'
+							margin='5px'
+							width='10vw;'
+							fontSize='.9vw;'>
+							add new sample
+						</Button>
 					</div>
 				)}
 			</div>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import ContactForm from "./ContactForm";
+import { Button } from "rebass";
 
 export default class Writer extends Component {
 	state = {
@@ -11,12 +12,17 @@ export default class Writer extends Component {
 	};
 
 	componentDidMount() {
+		this.getWriter();
+	}
+
+	getWriter = () => {
 		axios.get(`/api/writers/${this.props.match.params.writerId}`).then(res => {
 			this.setState({ writer: res.data });
 		});
-	}
+	};
 
 	handleToggleEditForm = () => {
+		this.getWriter();
 		this.setState(state => {
 			return { showEditForm: !state.showEditForm };
 		});
@@ -58,6 +64,15 @@ export default class Writer extends Component {
 			<div className='single-writer'>
 				{this.state.showEditForm ? (
 					<div className='edit-writer-form'>
+						<Button
+							onClick={this.handleToggleEditForm}
+							bg='white'
+							color='black'
+							margin='5px'
+							width='10vw;'
+							fontSize='1vw;'>
+							back to writer
+						</Button>
 						<form onSubmit={this.handleSubmit}>
 							<div>
 								<label htmlFor='writer-name'>name: </label>
@@ -100,10 +115,14 @@ export default class Writer extends Component {
 								/>
 							</div>
 							<div>
-								<input type='submit' value='edit writer' />
-								<button onClick={this.handleToggleEditForm}>
-									back to writer
-								</button>
+								<Button
+									bg='white'
+									color='black'
+									margin='5px'
+									width='10vw;'
+									fontSize='1vw;'>
+									edit writer
+								</Button>
 							</div>
 						</form>
 					</div>
@@ -133,8 +152,24 @@ export default class Writer extends Component {
 								writing samples
 							</Link>
 						</div>
-						<button onClick={this.handleToggleEditForm}>edit writer</button>
-						<button onClick={this.handleDelete}>delete writer</button>
+						<Button
+							onClick={this.handleToggleEditForm}
+							bg='white'
+							color='black'
+							margin='5px'
+							width='10vw;'
+							fontSize='1vw;'>
+							edit writer
+						</Button>
+						<Button
+							onClick={this.handleDelete}
+							bg='white'
+							color='black'
+							margin='5px'
+							width='10vw;'
+							fontSize='1vw;'>
+							delete writer
+						</Button>
 						<ContactForm
 							name={this.state.writer.name}
 							email={this.state.writer.email}
