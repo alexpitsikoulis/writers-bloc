@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Button } from "rebass";
+import WriterForm from "./WriterForm";
 
 export default class Writers extends Component {
 	state = {
@@ -41,7 +42,10 @@ export default class Writers extends Component {
 		event.preventDefault();
 		axios.post("/api/writers", this.state.newWriter).then(() => {
 			this.getWriters();
-			this.setState({ showNewForm: false });
+			this.setState({
+				showNewForm: false,
+				newWriter: { name: "", imageLink: "", bio: "", email: "" }
+			});
 		});
 	};
 
@@ -66,58 +70,11 @@ export default class Writers extends Component {
 							fontSize='1vw;'>
 							back to writers
 						</Button>
-						<form onSubmit={this.handleSubmit}>
-							<div>
-								<label htmlFor='new-writer-name'>name: </label>
-								<input
-									type='text'
-									id='new-writer-name'
-									name='name'
-									value={this.state.newWriter.name}
-									onChange={this.handleInputChange}
-								/>
-							</div>
-							<div>
-								<label htmlFor='new-writer-email'>email: </label>
-								<input
-									type='email'
-									id='new-writer-email'
-									name='email'
-									value={this.state.newWriter.email}
-									onChange={this.handleInputChange}
-								/>
-							</div>
-							<div>
-								<label htmlFor='new-writer-bio'>bio: </label>
-								<input
-									type='text'
-									id='new-writer-bio'
-									name='bio'
-									value={this.state.newWriter.bio}
-									onChange={this.handleInputChange}
-								/>
-							</div>
-							<div>
-								<label htmlFor='new-writer-image-link'>image link: </label>
-								<input
-									type='text'
-									id='new-writer-image-link'
-									name='imageLink'
-									value={this.state.newWriter.imageLink}
-									onChange={this.handleInputChange}
-								/>
-							</div>
-							<div>
-								<Button
-									bg='white'
-									color='black'
-									margin='5px'
-									width='10vw;'
-									fontSize='0.8vw;'>
-									create new writer
-								</Button>
-							</div>
-						</form>
+						<WriterForm
+							newWriter={this.state.newWriter}
+							handleInputChange={this.handleInputChange}
+							handleSubmit={this.handleSubmit}
+						/>
 					</div>
 				) : (
 					<div className='writers-list'>
