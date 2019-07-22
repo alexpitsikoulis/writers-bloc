@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import ContactForm from "./ContactForm";
+import WriterForm from "./WriterForm";
 import { Button } from "rebass";
 
 export default class Writer extends Component {
@@ -73,58 +74,11 @@ export default class Writer extends Component {
 							fontSize='1vw;'>
 							back to writer
 						</Button>
-						<form onSubmit={this.handleSubmit}>
-							<div>
-								<label htmlFor='writer-name'>name: </label>
-								<input
-									type='text'
-									id='writer-name'
-									name='name'
-									value={this.state.writer.name}
-									onChange={this.handleInputChange}
-								/>
-							</div>
-							<div>
-								<label htmlFor='writer-email'>email: </label>
-								<input
-									type='email'
-									id='writer-email'
-									name='email'
-									value={this.state.writer.email}
-									onChange={this.handleInputChange}
-								/>
-							</div>
-							<div>
-								<label htmlFor='writer-bio'>bio: </label>
-								<input
-									type='text'
-									id='writer-bio'
-									name='bio'
-									value={this.state.writer.bio}
-									onChange={this.handleInputChange}
-								/>
-							</div>
-							<div>
-								<label htmlFor="'writer-image-link">image link: </label>
-								<input
-									type='text'
-									id='writer-image-link'
-									name='imageLink'
-									value={this.state.writer.imageLink}
-									onChange={this.handleInputChange}
-								/>
-							</div>
-							<div>
-								<Button
-									bg='white'
-									color='black'
-									margin='5px'
-									width='10vw;'
-									fontSize='1vw;'>
-									edit writer
-								</Button>
-							</div>
-						</form>
+						<WriterForm
+							writer={this.state.writer}
+							handleInputChange={this.handleInputChange}
+							handleSubmit={this.handleSubmit}
+						/>
 					</div>
 				) : (
 					<div className='single-writer'>
