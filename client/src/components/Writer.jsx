@@ -58,7 +58,6 @@ export default class Writer extends Component {
 			<div className='single-writer'>
 				{this.state.showEditForm ? (
 					<div className='edit-writer-form'>
-						<button onClick={this.handleToggleEditForm}>back to writer</button>
 						<form onSubmit={this.handleSubmit}>
 							<div>
 								<label htmlFor='writer-name'>name: </label>
@@ -102,6 +101,9 @@ export default class Writer extends Component {
 							</div>
 							<div>
 								<input type='submit' value='edit writer' />
+								<button onClick={this.handleToggleEditForm}>
+									back to writer
+								</button>
 							</div>
 						</form>
 					</div>

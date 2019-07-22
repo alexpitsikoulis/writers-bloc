@@ -22,7 +22,7 @@ function App() {
 					<Route path='/writers/:writerId/samples' component={Samples} />
 					<Route path='/writers/:writerId' component={Writer} />
 					<Route path='/writers' component={Writers} />
-					<Route path='/' component={Home} />
+					<Route exact path='/' component={Home} />
 				</Switch>
 				<Route path='/' component={Footer} />
 			</Router>
