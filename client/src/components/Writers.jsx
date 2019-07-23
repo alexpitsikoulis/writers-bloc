@@ -14,6 +14,7 @@ const override = css`
 
 export default class Writers extends Component {
 	state = {
+		loading: true,
 		writers: [],
 		showNewForm: false,
 		newWriter: {
@@ -21,8 +22,7 @@ export default class Writers extends Component {
 			imageLink: "",
 			bio: "",
 			email: ""
-		},
-		loading: true
+		}
 	};
 
 	componentDidMount() {
