@@ -73,15 +73,6 @@ export default class Writers extends Component {
 		});
 		return (
 			<div className='all-writers'>
-				<div>
-					<RingLoader
-						css={override}
-						sizeUnit={"px"}
-						size={150}
-						color={`#000000`}
-						loading={this.state.loading}
-					/>
-				</div>
 				{this.state.showNewForm ? (
 					<div className='new-writer-form'>
 						<Button
@@ -114,6 +105,15 @@ export default class Writers extends Component {
 						</Button>
 					</div>
 				)}
+				<div>
+					<RingLoader
+						css={override}
+						sizeUnit={"px"}
+						size={150}
+						color={`#000000`}
+						loading={this.state.loading}
+					/>
+				</div>
 			</div>
 		);
 	}
