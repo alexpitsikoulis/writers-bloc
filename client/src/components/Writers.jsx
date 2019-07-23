@@ -90,6 +90,16 @@ export default class Writers extends Component {
 							handleSubmit={this.handleSubmit}
 						/>
 					</div>
+				) : this.state.loading ? (
+					<div>
+						<RingLoader
+							css={override}
+							sizeUnit={"px"}
+							size={150}
+							color={`#000000`}
+							loading={this.state.loading}
+						/>
+					</div>
 				) : (
 					<div className='writers-list'>
 						<h2>all writers</h2>
@@ -105,15 +115,6 @@ export default class Writers extends Component {
 						</Button>
 					</div>
 				)}
-				<div>
-					<RingLoader
-						css={override}
-						sizeUnit={"px"}
-						size={150}
-						color={`#000000`}
-						loading={this.state.loading}
-					/>
-				</div>
 			</div>
 		);
 	}
