@@ -3,6 +3,14 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { Button } from "rebass";
 import WriterForm from "./WriterForm";
+import { RingLoader } from "react-spinners";
+import { css } from "@emotion/core";
+
+const override = css`
+	display: block;
+	margin: 0 auto;
+	border-color: red;
+`;
 
 export default class Writers extends Component {
 	state = {
@@ -13,7 +21,8 @@ export default class Writers extends Component {
 			imageLink: "",
 			bio: "",
 			email: ""
-		}
+		},
+		loading: true
 	};
 
 	componentDidMount() {
@@ -21,9 +30,14 @@ export default class Writers extends Component {
 	}
 
 	getWriters = () => {
-		axios.get("/api/writers").then(res => {
-			this.setState({ writers: res.data });
-		});
+		axios
+			.get("/api/writers")
+			.then(res => {
+				this.setState({ writers: res.data });
+			})
+			.then(() => {
+				this.setState({ loading: false });
+			});
 	};
 
 	handleToggleNewForm = () => {
@@ -59,6 +73,15 @@ export default class Writers extends Component {
 		});
 		return (
 			<div className='all-writers'>
+				<div>
+					<RingLoader
+						css={override}
+						sizeUnit={"px"}
+						size={150}
+						color={`#000000`}
+						loading={this.state.loading}
+					/>
+				</div>
 				{this.state.showNewForm ? (
 					<div className='new-writer-form'>
 						<Button
