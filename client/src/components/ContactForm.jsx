@@ -5,7 +5,7 @@ export default class ContactForm extends Component {
 	render() {
 		return (
 			<div className='contact-form'>
-				<h4>contact me</h4>
+				<h4>contact us</h4>
 				<form>
 					<div>
 						<label htmlFor='contact-name'>name: </label>

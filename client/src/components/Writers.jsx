@@ -99,7 +99,7 @@ export default class Writers extends Component {
 							css={override}
 							sizeUnit={"px"}
 							size={150}
-							color={`#000000`}
+							color={`white`}
 							loading={this.state.loading}
 						/>
 					</div>

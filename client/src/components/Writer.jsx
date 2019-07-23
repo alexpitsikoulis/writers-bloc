@@ -124,10 +124,6 @@ export default class Writer extends Component {
 							fontSize='1vw;'>
 							delete writer
 						</Button>
-						<ContactForm
-							name={this.state.writer.name}
-							email={this.state.writer.email}
-						/>
 					</div>
 				)}
 			</div>
