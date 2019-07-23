@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Text } from "rebass";
 
 export default class Header extends Component {
 	render() {
@@ -6,7 +7,9 @@ export default class Header extends Component {
 			<div>
 				<header>
 					<h1>
-						<a href='/'>writer's bloc</a>
+						<a href='/'>
+							<Text letterSpacing='3px'>writer's bloc</Text>
+						</a>
 					</h1>
 				</header>
 			</div>

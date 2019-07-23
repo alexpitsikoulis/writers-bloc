@@ -6,7 +6,8 @@
   "dependencies": {
     "concurrently": "^4.1.1",
     "express": "^4.17.1",
-    "mongoose": "^5.6.1"
+    "mongoose": "^5.6.1",
+    "react-spinners": "^0.5.13"
   },
   "engines": {
     "node": "10.x"
