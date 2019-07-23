@@ -30,12 +30,14 @@ export default class Writers extends Component {
 	}
 
 	getWriters = () => {
-		axios.get("/api/writers").then(res => {
-			this.setState({ writers: res.data });
-		});
-		// .then(() => {
-		// 	this.setState({ loading: false });
-		// });
+		axios
+			.get("/api/writers")
+			.then(res => {
+				this.setState({ writers: res.data });
+			})
+			.then(() => {
+				this.setState({ loading: false });
+			});
 	};
 
 	handleToggleNewForm = () => {
