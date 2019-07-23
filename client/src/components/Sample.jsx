@@ -3,9 +3,12 @@ import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import { Button } from "rebass";
 import SampleForm from "./SampleForm";
+import { RingLoader } from "react-spinners";
+import { css } from "@emotion/core";
 
 export default class Sample extends Component {
 	state = {
+		loading: true,
 		sample: {},
 		showEditForm: false,
 		redirectToWriterSamples: false
@@ -24,6 +27,12 @@ export default class Sample extends Component {
 			)
 			.then(res => {
 				this.setState({ sample: res.data });
+			})
+			.then(() => {
+				this.setState({ loading: false });
+				// window.setTimeout(() => {
+				// 	this.setState({ loading: false });
+				// }, 3000);
 			});
 	};
 
@@ -93,6 +102,18 @@ export default class Sample extends Component {
 							handleSubmit={this.handleSubmit}
 						/>
 					</div>
+				) : this.state.loading ? (
+					<RingLoader
+						css={css`
+							display: block;
+							margin: 0 auto;
+							border-color: red;
+						`}
+						sizeUnit={"px"}
+						size={150}
+						color={`white`}
+						loading={this.state.loading}
+					/>
 				) : (
 					<div className='single-sample'>
 						<div>

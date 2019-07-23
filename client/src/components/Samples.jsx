@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { Button } from "rebass";
 import SampleForm from "./SampleForm";
-import Sample from "./Sample";
+import { RingLoader } from "react-spinners";
+import { css } from "@emotion/core";
 
 export default class Samples extends Component {
 	state = {
+		loading: true,
 		samples: [],
 		showNewForm: false,
 		newSample: {
@@ -25,6 +27,12 @@ export default class Samples extends Component {
 			.get(`/api/writers/${this.props.match.params.writerId}/samples`)
 			.then(res => {
 				this.setState({ samples: res.data });
+			})
+			.then(() => {
+				this.setState({ loading: false });
+				// window.setTimeout(() => {
+				// 	this.setState({ loading: false });
+				// }, 3000);
 			});
 	};
 
@@ -88,6 +96,18 @@ export default class Samples extends Component {
 							handleSubmit={this.handleSubmit}
 						/>
 					</div>
+				) : this.state.loading ? (
+					<RingLoader
+						css={css`
+							display: block;
+							margin: 0 auto;
+							border-color: red;
+						`}
+						sizeUnit={"px"}
+						size={150}
+						color={`white`}
+						loading={this.state.loading}
+					/>
 				) : (
 					<div className='all-samples'>
 						<Link to={`/writers/${this.props.match.params.writerId}`}>

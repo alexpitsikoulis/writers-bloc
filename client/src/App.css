@@ -42,14 +42,24 @@ header {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-bottom: 5vh;
+}
+
+nav {
+	width: 100vw;
+	height: 8vh;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background: rgba(0, 0, 139, 0.4);
 }
 
 footer {
-	height: 10vh;
+	width: 100vw;
+	height: 15vh;
 	text-align: left;
 	display: flex;
 	margin-top: 5vh;
+	background: rgba(0, 0, 139, 0.4);
 }
 footer small {
 	margin: 2vw;
@@ -75,6 +85,10 @@ button {
 button:focus {
 	outline: none !important;
 	border: 2px solid darkorange;
+}
+
+.header-div {
+	margin-bottom: 5vh;
 }
 
 .all-writers {

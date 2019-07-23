@@ -6,12 +6,6 @@ import WriterForm from "./WriterForm";
 import { RingLoader } from "react-spinners";
 import { css } from "@emotion/core";
 
-const override = css`
-	display: block;
-	margin: 0 auto;
-	border-color: red;
-`;
-
 export default class Writers extends Component {
 	state = {
 		loading: true,
@@ -96,7 +90,11 @@ export default class Writers extends Component {
 				) : this.state.loading ? (
 					<div>
 						<RingLoader
-							css={override}
+							css={css`
+								display: block;
+								margin: 0 auto;
+								border-color: red;
+							`}
 							sizeUnit={"px"}
 							size={150}
 							color={`white`}

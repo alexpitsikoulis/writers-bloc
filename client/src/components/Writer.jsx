@@ -4,9 +4,12 @@ import axios from "axios";
 import ContactForm from "./ContactForm";
 import WriterForm from "./WriterForm";
 import { Button } from "rebass";
+import { RingLoader } from "react-spinners";
+import { css } from "@emotion/core";
 
 export default class Writer extends Component {
 	state = {
+		loading: true,
 		writer: {},
 		showEditForm: false,
 		redirectToAllWriters: false
@@ -17,9 +20,17 @@ export default class Writer extends Component {
 	}
 
 	getWriter = () => {
-		axios.get(`/api/writers/${this.props.match.params.writerId}`).then(res => {
-			this.setState({ writer: res.data });
-		});
+		axios
+			.get(`/api/writers/${this.props.match.params.writerId}`)
+			.then(res => {
+				this.setState({ writer: res.data });
+			})
+			.then(() => {
+				this.setState({ loading: false });
+				// window.setTimeout(() => {
+				// 	this.setState({ loading: false });
+				// }, 3000);
+			});
 	};
 
 	handleToggleEditForm = () => {
@@ -80,6 +91,18 @@ export default class Writer extends Component {
 							handleSubmit={this.handleSubmit}
 						/>
 					</div>
+				) : this.state.loading ? (
+					<RingLoader
+						css={css`
+							display: block;
+							margin: 0 auto;
+							border-color: red;
+						`}
+						sizeUnit={"px"}
+						size={150}
+						color={`white`}
+						loading={this.state.loading}
+					/>
 				) : (
 					<div className='single-writer'>
 						<h2>{this.state.writer.name}</h2>
