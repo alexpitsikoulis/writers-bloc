@@ -37,6 +37,9 @@ export default class Writers extends Component {
 			})
 			.then(() => {
 				this.setState({ loading: false });
+				// window.setTimeout(() => {
+				// 	this.setState({ loading: false });
+				// }, 3000);
 			});
 	};
 
