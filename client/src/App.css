@@ -50,7 +50,6 @@ nav {
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
-	background: rgba(0, 0, 139, 0.4);
 }
 
 footer {
@@ -59,7 +58,7 @@ footer {
 	text-align: left;
 	display: flex;
 	margin-top: 5vh;
-	background: rgba(0, 0, 139, 0.4);
+	background: rgba(0, 0, 139, 0.2);
 }
 footer small {
 	margin: 2vw;
@@ -89,6 +88,7 @@ button:focus {
 
 .header-div {
 	margin-bottom: 5vh;
+	background: rgba(0, 0, 139, 0.2);
 }
 
 .all-writers {
