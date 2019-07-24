@@ -38,18 +38,12 @@
 }
 
 header {
-	height: 15vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	height: 10vh;
 }
 
 nav {
 	width: 100vw;
 	height: 8vh;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
 }
 
 footer {
@@ -65,7 +59,7 @@ footer small {
 }
 
 h1 {
-	font-size: 3em;
+	font-size: 2.5em;
 }
 
 a {
@@ -88,7 +82,11 @@ button:focus {
 
 .header-div {
 	margin-bottom: 5vh;
-	background: rgba(0, 0, 139, 0.2);
+	background: rgba(0, 0, 139, 0.4);
+}
+
+.nav-flex {
+	width: 100vw;
 }
 
 .all-writers {
