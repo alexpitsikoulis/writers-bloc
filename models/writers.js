@@ -20,7 +20,7 @@ const WriterSchema = new mongoose.Schema({
 const WriterCollection = mongoose.model("Writer", WriterSchema);
 
 function getAllWriters() {
-	return WriterCollection.find();
+	return WriterCollection.find().sort({ name: "asc" });
 }
 
 function getSingleWriter(writerId) {

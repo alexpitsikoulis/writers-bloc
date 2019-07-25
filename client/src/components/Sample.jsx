@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
-import { Button, Box } from "rebass";
+import { Button, Box, Flex, Card, Text } from "rebass";
 import SampleForm from "./SampleForm";
 import { RingLoader } from "react-spinners";
 import { css } from "@emotion/core";
@@ -10,12 +10,14 @@ export default class Sample extends Component {
 	state = {
 		loading: true,
 		sample: {},
+		writer: "",
 		showEditForm: false,
 		redirectToWriterSamples: false
 	};
 
 	componentDidMount() {
 		this.getSample();
+		this.getWriter();
 	}
 
 	getSample = () => {
@@ -34,6 +36,12 @@ export default class Sample extends Component {
 				// 	this.setState({ loading: false });
 				// }, 3000);
 			});
+	};
+
+	getWriter = () => {
+		axios.get(`/api/writers/${this.props.match.params.writerId}`).then(res => {
+			this.setState({ writer: res.data.name });
+		});
 	};
 
 	handleToggleEditForm = () => {
@@ -121,8 +129,21 @@ export default class Sample extends Component {
 								back to all samples
 							</Link>
 							<h2>{this.state.sample.name}</h2>
-							<h4>{this.state.sample.typeOfWriting}</h4>
-							<p>{this.state.sample.body}</p>
+							<h3>
+								<strong>by: </strong>
+								{this.state.writer}
+							</h3>
+							<h4>
+								<strong>type of writing: </strong>
+								{this.state.sample.typeOfWriting}
+							</h4>
+							<Flex justifyContent='center'>
+								<Card bg='white' borderRadius={5}>
+									<Text>
+										<p>{this.state.sample.body}</p>
+									</Text>
+								</Card>
+							</Flex>
 							<Button
 								onClick={this.handleToggleEditForm}
 								bg='white'

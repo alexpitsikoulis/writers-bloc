@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import WriterForm from "./WriterForm";
-import { Button, Box } from "rebass";
+import { Button, Box, Flex, Card, Image, Text } from "rebass";
 import { RingLoader } from "react-spinners";
 import { css } from "@emotion/core";
 
@@ -104,15 +104,29 @@ export default class Writer extends Component {
 					/>
 				) : (
 					<Box className='single-writer'>
-						<h2>{this.state.writer.name}</h2>
-						<div>
+						{this.state.writer.imageLink ? null : (
+							<h2>{this.state.writer.name}</h2>
+						)}
+						<Box>
 							<Link to='/writers'>back to all writers</Link>
-						</div>
+						</Box>
 						{this.state.writer.imageLink ? (
-							<img
-								src={this.state.writer.imageLink}
-								alt={this.state.writer.name}
-							/>
+							<Flex marginTop='5vh'>
+								<Card
+									width='32vw'
+									mx='auto'
+									p={2}
+									variant='basic'
+									bg='white'
+									borderRadius={5}>
+									<Image
+										src={this.state.writer.imageLink}
+										borderRadius={2}
+										alignSelf='center'
+									/>
+									<Text>{this.state.writer.name}</Text>
+								</Card>
+							</Flex>
 						) : null}
 						<p>
 							<strong>bio: </strong>
@@ -128,24 +142,26 @@ export default class Writer extends Component {
 								writing samples
 							</Link>
 						</Box>
-						<Button
-							onClick={this.handleToggleEditForm}
-							bg='white'
-							color='black'
-							margin='5px'
-							width='10vw;'
-							fontSize='1vw;'>
-							edit writer
-						</Button>
-						<Button
-							onClick={this.handleDelete}
-							bg='white'
-							color='black'
-							margin='5px'
-							width='10vw;'
-							fontSize='1vw;'>
-							delete writer
-						</Button>
+						<Box marginTop='4vh'>
+							<Button
+								onClick={this.handleToggleEditForm}
+								bg='white'
+								color='black'
+								margin='5px'
+								width='10vw;'
+								fontSize='1vw;'>
+								edit writer
+							</Button>
+							<Button
+								onClick={this.handleDelete}
+								bg='white'
+								color='black'
+								margin='5px'
+								width='10vw;'
+								fontSize='1vw;'>
+								delete writer
+							</Button>
+						</Box>
 					</Box>
 				)}
 			</Box>
