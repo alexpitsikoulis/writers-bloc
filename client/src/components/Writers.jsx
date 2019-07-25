@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { Button } from "rebass";
+import { Button, Flex, Box } from "rebass";
 import WriterForm from "./WriterForm";
 import { RingLoader } from "react-spinners";
 import { css } from "@emotion/core";
@@ -69,9 +69,9 @@ export default class Writers extends Component {
 			);
 		});
 		return (
-			<div className='all-writers'>
+			<Flex className='all-writers'>
 				{this.state.showNewForm ? (
-					<div className='new-writer-form'>
+					<Box className='new-writer-form'>
 						<Button
 							onClick={this.handleToggleNewForm}
 							bg='white'
@@ -86,23 +86,21 @@ export default class Writers extends Component {
 							handleInputChange={this.handleInputChange}
 							handleSubmit={this.handleSubmit}
 						/>
-					</div>
+					</Box>
 				) : this.state.loading ? (
-					<div>
-						<RingLoader
-							css={css`
-								display: block;
-								margin: 0 auto;
-								border-color: red;
-							`}
-							sizeUnit={"px"}
-							size={150}
-							color={`white`}
-							loading={this.state.loading}
-						/>
-					</div>
+					<RingLoader
+						css={css`
+							display: block;
+							margin: 0 auto;
+							border-color: red;
+						`}
+						sizeUnit={"px"}
+						size={150}
+						color={`white`}
+						loading={this.state.loading}
+					/>
 				) : (
-					<div className='writers-list'>
+					<Box className='writers-list'>
 						<h2>all writers</h2>
 						{writersList}
 						<Button
@@ -114,9 +112,9 @@ export default class Writers extends Component {
 							fontSize='1vw;'>
 							add new writer
 						</Button>
-					</div>
+					</Box>
 				)}
-			</div>
+			</Flex>
 		);
 	}
 }

@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
-import ContactForm from "./ContactForm";
 import WriterForm from "./WriterForm";
-import { Button } from "rebass";
+import { Button, Box } from "rebass";
 import { RingLoader } from "react-spinners";
 import { css } from "@emotion/core";
 
@@ -73,9 +72,9 @@ export default class Writer extends Component {
 			return <Redirect to='/writers' />;
 		}
 		return (
-			<div className='single-writer'>
+			<Box className='single-writer'>
 				{this.state.showEditForm ? (
-					<div className='edit-writer-form'>
+					<Box className='edit-writer-form'>
 						<Button
 							onClick={this.handleToggleEditForm}
 							bg='white'
@@ -90,7 +89,7 @@ export default class Writer extends Component {
 							handleInputChange={this.handleInputChange}
 							handleSubmit={this.handleSubmit}
 						/>
-					</div>
+					</Box>
 				) : this.state.loading ? (
 					<RingLoader
 						css={css`
@@ -104,7 +103,7 @@ export default class Writer extends Component {
 						loading={this.state.loading}
 					/>
 				) : (
-					<div className='single-writer'>
+					<Box className='single-writer'>
 						<h2>{this.state.writer.name}</h2>
 						<div>
 							<Link to='/writers'>back to all writers</Link>
@@ -123,12 +122,12 @@ export default class Writer extends Component {
 							<strong>email: </strong>
 							{this.state.writer.email}
 						</p>
-						<div>
+						<Box>
 							<Link to={`/writers/${this.props.match.params.writerId}/samples`}>
 								{" "}
 								writing samples
 							</Link>
-						</div>
+						</Box>
 						<Button
 							onClick={this.handleToggleEditForm}
 							bg='white'
@@ -147,9 +146,9 @@ export default class Writer extends Component {
 							fontSize='1vw;'>
 							delete writer
 						</Button>
-					</div>
+					</Box>
 				)}
-			</div>
+			</Box>
 		);
 	}
 }

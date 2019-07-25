@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
-import { Button } from "rebass";
+import { Button, Box } from "rebass";
 import SampleForm from "./SampleForm";
 import { RingLoader } from "react-spinners";
 import { css } from "@emotion/core";
@@ -84,9 +84,9 @@ export default class Sample extends Component {
 			);
 		}
 		return (
-			<div>
+			<Box>
 				{this.state.showEditForm ? (
-					<div className='edit-sample-form'>
+					<Box className='edit-sample-form'>
 						<Button
 							onClick={this.handleToggleEditForm}
 							bg='white'
@@ -101,7 +101,7 @@ export default class Sample extends Component {
 							handleInputChange={this.handleInputChange}
 							handleSubmit={this.handleSubmit}
 						/>
-					</div>
+					</Box>
 				) : this.state.loading ? (
 					<RingLoader
 						css={css`
@@ -115,8 +115,8 @@ export default class Sample extends Component {
 						loading={this.state.loading}
 					/>
 				) : (
-					<div className='single-sample'>
-						<div>
+					<Box className='single-sample'>
+						<Box>
 							<Link to={`/writers/${this.props.match.params.writerId}/samples`}>
 								back to all samples
 							</Link>
@@ -141,10 +141,10 @@ export default class Sample extends Component {
 								fontSize='1vw;'>
 								delete sample
 							</Button>
-						</div>
-					</div>
+						</Box>
+					</Box>
 				)}
-			</div>
+			</Box>
 		);
 	}
 }

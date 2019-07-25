@@ -91,9 +91,6 @@ button:focus {
 
 .all-writers {
 	height: 70vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
 }
 
 .single-writer img {
@@ -103,16 +100,10 @@ button:focus {
 
 .all-samples {
 	min-height: 70vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
 }
 
 .single-sample {
 	min-height: 70vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
 	width: 80vw;
 }
 

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { Button } from "rebass";
+import { Button, Box } from "rebass";
 
 export default class WriterForm extends Component {
 	render() {
 		return (
-			<div>
+			<Box>
 				<form onSubmit={this.props.handleSubmit}>
-					<div>
+					<Box>
 						<label htmlFor='writer-name'>name: </label>
 						<input
 							type='text'
@@ -19,8 +19,8 @@ export default class WriterForm extends Component {
 							}
 							onChange={this.props.handleInputChange}
 						/>
-					</div>
-					<div>
+					</Box>
+					<Box>
 						<label htmlFor='writer-email'>email: </label>
 						<input
 							type='email'
@@ -33,8 +33,8 @@ export default class WriterForm extends Component {
 							}
 							onChange={this.props.handleInputChange}
 						/>
-					</div>
-					<div>
+					</Box>
+					<Box>
 						<label htmlFor='writer-bio'>bio: </label>
 						<input
 							type='text'
@@ -47,8 +47,8 @@ export default class WriterForm extends Component {
 							}
 							onChange={this.props.handleInputChange}
 						/>
-					</div>
-					<div>
+					</Box>
+					<Box>
 						<label htmlFor='writer-image-link'>image link: </label>
 						<input
 							type='text'
@@ -61,8 +61,8 @@ export default class WriterForm extends Component {
 							}
 							onChange={this.props.handleInputChange}
 						/>
-					</div>
-					<div>
+					</Box>
+					<Box>
 						<Button
 							bg='white'
 							color='black'
@@ -71,9 +71,9 @@ export default class WriterForm extends Component {
 							fontSize='0.8vw;'>
 							{this.props.newWriter ? "create new writer" : "edit writer"}
 						</Button>
-					</div>
+					</Box>
 				</form>
-			</div>
+			</Box>
 		);
 	}
 }

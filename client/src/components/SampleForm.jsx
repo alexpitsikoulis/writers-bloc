@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { Button } from "rebass";
+import { Button, Box } from "rebass";
 
 export default class SampleForm extends Component {
 	render() {
 		return (
-			<div>
+			<Box>
 				<form onSubmit={this.props.handleSubmit}>
-					<div>
+					<Box>
 						<label htmlFor='sample-name'>name: </label>
 						<input
 							type='text'
@@ -19,8 +19,8 @@ export default class SampleForm extends Component {
 							}
 							onChange={this.props.handleInputChange}
 						/>
-					</div>
-					<div>
+					</Box>
+					<Box>
 						<label htmlFor='sample-type'>type of writing: </label>
 						<input
 							type='text'
@@ -33,8 +33,8 @@ export default class SampleForm extends Component {
 							}
 							onChange={this.props.handleInputChange}
 						/>
-					</div>
-					<div>
+					</Box>
+					<Box>
 						<label htmlFor='sample-body'>body: </label>
 						<textarea
 							name='body'
@@ -48,8 +48,8 @@ export default class SampleForm extends Component {
 							}
 							onChange={this.props.handleInputChange}
 						/>
-					</div>
-					<div>
+					</Box>
+					<Box>
 						<Button
 							bg='white'
 							color='black'
@@ -58,9 +58,9 @@ export default class SampleForm extends Component {
 							fontSize='0.8vw;'>
 							{this.props.newSample ? "create new sample" : "edit sample"}
 						</Button>
-					</div>
+					</Box>
 				</form>
-			</div>
+			</Box>
 		);
 	}
 }

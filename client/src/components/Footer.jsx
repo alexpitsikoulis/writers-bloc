@@ -1,13 +1,14 @@
 import React, { Component } from "react";
+import { Box } from "rebass";
 
 export default class Footer extends Component {
 	render() {
 		return (
-			<div>
+			<Box>
 				<footer>
 					<small>Developed by Alex Pitsikoulis</small>
 				</footer>
-			</div>
+			</Box>
 		);
 	}
 }

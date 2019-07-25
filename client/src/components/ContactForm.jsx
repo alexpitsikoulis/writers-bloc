@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Button } from "rebass";
+import { Button, Box } from "rebass";
 import { RingLoader } from "react-spinners";
 import { css } from "@emotion/core";
 
@@ -58,10 +58,10 @@ export default class ContactForm extends Component {
 				loading={this.state.loading}
 			/>
 		) : (
-			<div className='contact-form'>
+			<Box className='contact-form'>
 				<h4>contact us</h4>
 				<form onSubmit={this.handleSubmit.bind(this)}>
-					<div>
+					<Box>
 						<label htmlFor='contact-name'>name: </label>
 						<input
 							type='text'
@@ -70,8 +70,8 @@ export default class ContactForm extends Component {
 							value={this.state.contact.name}
 							onChange={this.handleInputChange}
 						/>
-					</div>
-					<div>
+					</Box>
+					<Box>
 						<label htmlFor='contact-email'>email: </label>
 						<input
 							type='text'
@@ -80,8 +80,8 @@ export default class ContactForm extends Component {
 							value={this.state.contact.email}
 							onChange={this.handleInputChange}
 						/>
-					</div>
-					<div>
+					</Box>
+					<Box>
 						<label htmlFor='contact-message'>message: </label>
 						<textarea
 							name='message'
@@ -91,8 +91,8 @@ export default class ContactForm extends Component {
 							value={this.state.contact.message}
 							onChange={this.handleInputChange}
 						/>
-					</div>
-					<div>
+					</Box>
+					<Box>
 						<Button
 							bg='#4682b4'
 							color='white'
@@ -101,9 +101,9 @@ export default class ContactForm extends Component {
 							fontSize='1vw;'>
 							send message
 						</Button>
-					</div>
+					</Box>
 				</form>
-			</div>
+			</Box>
 		);
 	}
 }

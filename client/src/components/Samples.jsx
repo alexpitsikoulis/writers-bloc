@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { Button } from "rebass";
+import { Button, Box } from "rebass";
 import SampleForm from "./SampleForm";
 import { RingLoader } from "react-spinners";
 import { css } from "@emotion/core";
@@ -67,20 +67,20 @@ export default class Samples extends Component {
 	render() {
 		let samplesList = this.state.samples.map(sample => {
 			return (
-				<div key={sample._id}>
+				<Box key={sample._id}>
 					<Link
 						to={`/writers/${this.props.match.params.writerId}/samples/${
 							sample._id
 						}`}>
 						{sample.name}
 					</Link>
-				</div>
+				</Box>
 			);
 		});
 		return (
-			<div>
+			<Box>
 				{this.state.showNewForm ? (
-					<div className='new-sample-form'>
+					<Box className='new-sample-form'>
 						<Button
 							onClick={this.handleToggleNewForm}
 							bg='white'
@@ -95,7 +95,7 @@ export default class Samples extends Component {
 							handleInputChange={this.handleInputChange}
 							handleSubmit={this.handleSubmit}
 						/>
-					</div>
+					</Box>
 				) : this.state.loading ? (
 					<RingLoader
 						css={css`
@@ -109,7 +109,7 @@ export default class Samples extends Component {
 						loading={this.state.loading}
 					/>
 				) : (
-					<div className='all-samples'>
+					<Box className='all-samples'>
 						<Link to={`/writers/${this.props.match.params.writerId}`}>
 							back to writer
 						</Link>
@@ -124,9 +124,9 @@ export default class Samples extends Component {
 							fontSize='.9vw;'>
 							add new sample
 						</Button>
-					</div>
+					</Box>
 				)}
-			</div>
+			</Box>
 		);
 	}
 }
