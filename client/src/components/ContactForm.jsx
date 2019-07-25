@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Button, Box } from "rebass";
+import { Button, Flex, Box } from "rebass";
 import { RingLoader } from "react-spinners";
 import { css } from "@emotion/core";
 
@@ -61,37 +61,47 @@ export default class ContactForm extends Component {
 			<Box className='contact-form'>
 				<h4>contact us</h4>
 				<form onSubmit={this.handleSubmit.bind(this)}>
-					<Box>
-						<label htmlFor='contact-name'>name: </label>
-						<input
-							type='text'
-							id='contact-name'
-							name='name'
-							value={this.state.contact.name}
-							onChange={this.handleInputChange}
-						/>
-					</Box>
-					<Box>
-						<label htmlFor='contact-email'>email: </label>
-						<input
-							type='text'
-							id='contact-email'
-							name='email'
-							value={this.state.contact.email}
-							onChange={this.handleInputChange}
-						/>
-					</Box>
-					<Box>
-						<label htmlFor='contact-message'>message: </label>
-						<textarea
-							name='message'
-							id='contact-message'
-							cols='30'
-							rows='10'
-							value={this.state.contact.message}
-							onChange={this.handleInputChange}
-						/>
-					</Box>
+					<Flex flexDirection='column' alignItems='center'>
+						<Flex>
+							<Box width='50%'>
+								<label htmlFor='contact-name'>name: </label>
+							</Box>
+							<Box width='50%'>
+								<input
+									type='text'
+									id='contact-name'
+									name='name'
+									value={this.state.contact.name}
+									onChange={this.handleInputChange}
+								/>
+							</Box>
+						</Flex>
+						<Flex>
+							<Box width='50%'>
+								<label htmlFor='contact-email'>email: </label>
+							</Box>
+							<Box width='50%'>
+								<input
+									type='text'
+									id='contact-email'
+									name='email'
+									value={this.state.contact.email}
+									onChange={this.handleInputChange}
+								/>
+							</Box>
+						</Flex>
+						<Box m={2}>
+							<textarea
+								name='message'
+								id='contact-message'
+								cols='40'
+								rows='10'
+								placeholder='type your message here'
+								value={this.state.contact.message}
+								onChange={this.handleInputChange}
+							/>
+						</Box>
+					</Flex>
 					<Box>
 						<Button
 							bg='#4682b4'

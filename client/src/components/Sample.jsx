@@ -138,7 +138,7 @@ export default class Sample extends Component {
 								{this.state.sample.typeOfWriting}
 							</h4>
 							<Flex justifyContent='center'>
-								<Card bg='white' borderRadius={5}>
+								<Card bg='white' borderRadius={5} p={5} m={5}>
 									<Text>
 										<p>{this.state.sample.body}</p>
 									</Text>
