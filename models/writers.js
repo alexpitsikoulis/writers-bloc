@@ -41,10 +41,15 @@ function deleteWriter(writerId) {
 	return WriterCollection.findByIdAndDelete(writerId);
 }
 
+function deleteAllWriters() {
+	return WriterCollection.deleteMany();
+}
+
 module.exports = {
 	getAllWriters,
 	getSingleWriter,
 	addNewWriter,
 	editWriter,
-	deleteWriter
+	deleteWriter,
+	deleteAllWriters
 };
