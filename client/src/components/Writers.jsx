@@ -61,13 +61,30 @@ export default class Writers extends Component {
 	};
 
 	render() {
-		let writersList = this.state.writers.map(writer => {
+		let letters = this.state.writers.map(writer => {
+			return writer.name.charAt(0);
+		});
+		let lettersNoDuplicates = [...new Set(letters)];
+		let alphList = lettersNoDuplicates.map(letter => {
 			return (
-				<div key={writer._id}>
-					<Link to={`/writers/${writer._id}`}>{writer.name}</Link>
-				</div>
+				<Flex
+					className='alphList'
+					key={letter}
+					flexDirection='column'
+					alignItems='flex-start'
+					m={2}>
+					<h3 id={letter}>{letter}</h3> <hr />
+					{this.state.writers.map(writer => {
+						return writer.name.charAt(0) === letter ? (
+							<Box key={writer._id} alignSelf='center'>
+								<Link to={`/writers/${writer._id}`}>{writer.name}</Link>
+							</Box>
+						) : null;
+					})}
+				</Flex>
 			);
 		});
+
 		return (
 			<Flex className='all-writers'>
 				{this.state.showNewForm ? (
@@ -102,12 +119,18 @@ export default class Writers extends Component {
 				) : (
 					<Box className='writers-list'>
 						<h2>all writers</h2>
-						{writersList}
+						<Box>
+							<strong>jump to letter: </strong>
+							{lettersNoDuplicates.map(letter => {
+								return <a href={`#${letter}`}>{letter} </a>;
+							})}
+						</Box>
+						{alphList}
 						<Button
 							onClick={this.handleToggleNewForm}
 							bg='white'
 							color='black'
-							margin='5px'
+							marginTop='5vh'
 							width='10vw;'
 							fontSize='1vw;'>
 							add new writer

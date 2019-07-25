@@ -48,7 +48,7 @@ nav {
 
 footer {
 	width: 100vw;
-	height: 15vh;
+	max-height: 15vh;
 	text-align: left;
 	display: flex;
 	margin-top: 5vh;
@@ -56,6 +56,10 @@ footer {
 }
 footer small {
 	margin: 2vw;
+}
+
+hr {
+	width: 30vw;
 }
 
 h1 {
@@ -90,7 +94,7 @@ button:focus {
 }
 
 .all-writers {
-	height: 70vh;
+	min-height: 70vh;
 }
 
 .single-writer img {
@@ -99,6 +103,10 @@ button:focus {
 }
 
 .all-samples {
+	min-height: 70vh;
+}
+
+.all-writers {
 	min-height: 70vh;
 }
 
