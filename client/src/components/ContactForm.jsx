@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Button } from "rebass";
+import { RingLoader } from "react-spinners";
+import { css } from "@emotion/core";
 
 export default class ContactForm extends Component {
 	state = {
+		loading: false,
 		contact: {
 			name: "",
 			email: "",
@@ -19,11 +22,13 @@ export default class ContactForm extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
+		this.setState({ loading: true });
 		const name = document.getElementById("contact-name").value;
 		const email = document.getElementById("contact-email").value;
 		const message = document.getElementById("contact-message").value;
 
 		axios.post("/send", { name, email, message }).then(response => {
+			this.setState({ loading: false });
 			if (response.data.msg === "success") {
 				alert("Message Sent.");
 				this.setState({
@@ -40,7 +45,19 @@ export default class ContactForm extends Component {
 	}
 
 	render() {
-		return (
+		return this.state.loading ? (
+			<RingLoader
+				css={css`
+					display: block;
+					margin: 0 auto;
+					border-color: red;
+				`}
+				sizeUnit={"px"}
+				size={150}
+				color={`white`}
+				loading={this.state.loading}
+			/>
+		) : (
 			<div className='contact-form'>
 				<h4>contact us</h4>
 				<form onSubmit={this.handleSubmit.bind(this)}>
