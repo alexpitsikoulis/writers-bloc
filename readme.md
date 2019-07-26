@@ -24,10 +24,10 @@ In future versions of the app I plan to implement user authentication to limit e
 
 ## Wireframe and ERD Images
 
-![ERD Image]('./images/ERD-image.png')
-![Wireframe Image 1]('./images/image1.png')
-![Wireframe Image 2]('./images/image2.png')
-![Wireframe Image 3]('./images/image3.png')
-![Wireframe Image 4]('./images/image4.png')
-![Wireframe Image 5]('./images/image5.png')
-![Wireframe Image 6]('./images/image6.png')
+![ERD Image]('./images/ERD-image.pdf')
+![Wireframe Image 1]('./images/image1.pdf')
+![Wireframe Image 2]('./images/image2.pdf')
+![Wireframe Image 3]('./images/image3.pdf')
+![Wireframe Image 4]('./images/image4.pdf')
+![Wireframe Image 5]('./images/image5.pdf')
+![Wireframe Image 6]('./images/image6.pdf')
