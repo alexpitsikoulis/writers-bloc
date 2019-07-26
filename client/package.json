@@ -49,6 +49,7 @@
 		"react-dev-utils": "^9.0.1",
 		"react-dom": "^16.8.6",
 		"react-router-dom": "^5.0.1",
+		"react-scroll-up-button": "^1.6.4",
 		"rebass": "^3.1.1",
 		"recompose": "^0.30.0",
 		"resolve": "1.10.0",

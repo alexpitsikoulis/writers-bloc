@@ -136,18 +136,19 @@ export default class Writer extends Component {
 										borderRadius={2}
 										alignSelf='center'
 									/>
-									<Text>{this.state.writer.name}</Text>
+									<Text margin={2}>
+										<h2>{this.state.writer.name}</h2>
+										<p>
+											<strong>email: </strong>
+											{this.state.writer.email}
+										</p>
+									</Text>
+									<Box className='bio'>
+										<p>{this.state.writer.bio}</p>
+									</Box>
 								</Card>
 							</Flex>
 						) : null}
-						<p>
-							<strong>bio: </strong>
-							{this.state.writer.bio}
-						</p>
-						<p>
-							<strong>email: </strong>
-							{this.state.writer.email}
-						</p>
 						<Box>
 							<Link to={`/writers/${this.props.match.params.writerId}/samples`}>
 								{" "}

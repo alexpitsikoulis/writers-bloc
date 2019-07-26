@@ -5,6 +5,7 @@ import { Button, Flex, Box } from "rebass";
 import WriterForm from "./WriterForm";
 import { RingLoader } from "react-spinners";
 import { css } from "@emotion/core";
+import ScrollUpButton from "react-scroll-up-button";
 
 export default class Writers extends Component {
 	state = {
@@ -139,6 +140,7 @@ export default class Writers extends Component {
 							fontSize='1vw;'>
 							add new writer
 						</Button>
+						<ScrollUpButton />
 					</Box>
 				)}
 			</Flex>

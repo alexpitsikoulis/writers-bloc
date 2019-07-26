@@ -9,6 +9,7 @@ import { css } from "@emotion/core";
 export default class Samples extends Component {
 	state = {
 		loading: true,
+		writer: {},
 		samples: [],
 		showNewForm: false,
 		newSample: {
@@ -19,6 +20,9 @@ export default class Samples extends Component {
 	};
 
 	componentDidMount() {
+		axios.get(`/api/writers/${this.props.match.params.writerId}`).then(res => {
+			this.setState({ writer: res.data });
+		});
 		this.getSamples();
 	}
 
@@ -111,7 +115,7 @@ export default class Samples extends Component {
 				) : (
 					<Box className='all-samples'>
 						<Link to={`/writers/${this.props.match.params.writerId}`}>
-							back to writer
+							back to {this.state.writer.name}
 						</Link>
 						<h2>writing samples</h2>
 						{samplesList}
@@ -119,7 +123,7 @@ export default class Samples extends Component {
 							onClick={this.handleToggleNewForm}
 							bg='white'
 							color='black'
-							margin='5px'
+							m={5}
 							width='10vw;'
 							fontSize='.9vw;'>
 							add new sample
