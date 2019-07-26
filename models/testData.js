@@ -1,7 +1,7 @@
 const writerApi = require("./writers");
 const sampleApi = require("./samples");
 
-names = [
+let names = [
 	"Aaran",
 	"Aaren",
 	"Aarez",
