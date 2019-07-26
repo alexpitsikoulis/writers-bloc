@@ -5,6 +5,7 @@ import { Button, Box, Flex, Card, Text } from "rebass";
 import SampleForm from "./SampleForm";
 import { RingLoader } from "react-spinners";
 import { css } from "@emotion/core";
+import Swal from "sweetalert2";
 
 export default class Sample extends Component {
 	state = {
@@ -72,17 +73,39 @@ export default class Sample extends Component {
 	};
 
 	handleDelete = () => {
-		if (window.confirm("Are you sure you want to delete this sample?")) {
-			axios
-				.delete(
-					`/api/writers/${this.props.match.params.writerId}/samples/${
-						this.props.match.params.sampleId
-					}`
-				)
-				.then(() => {
-					this.setState({ redirectToWriterSamples: true });
-				});
-		}
+		Swal.fire({
+			title: "Are you sure you want to delete this sample?",
+			text: "You won't be able to revert this!",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes, delete it!"
+		}).then(result => {
+			if (result.value) {
+				axios
+					.delete(
+						`/api/writers/${this.props.match.params.writerId}/samples/${
+							this.props.match.params.sampleId
+						}`
+					)
+					.then(() => {
+						this.setState({ redirectToWriterSamples: true });
+					});
+				Swal.fire("Deleted!", "Your file has been deleted.", "success");
+			}
+		});
+		// if (window.confirm("Are you sure you want to delete this sample?")) {
+		// 	axios
+		// 		.delete(
+		// 			`/api/writers/${this.props.match.params.writerId}/samples/${
+		// 				this.props.match.params.sampleId
+		// 			}`
+		// 		)
+		// 		.then(() => {
+		// 			this.setState({ redirectToWriterSamples: true });
+		// 		});
+		// }
 	};
 
 	render() {

@@ -5,6 +5,7 @@ import WriterForm from "./WriterForm";
 import { Button, Box, Flex, Card, Image, Text } from "rebass";
 import { RingLoader } from "react-spinners";
 import { css } from "@emotion/core";
+import Swal from "sweetalert2";
 
 export default class Writer extends Component {
 	state = {
@@ -58,13 +59,24 @@ export default class Writer extends Component {
 	};
 
 	handleDelete = () => {
-		if (window.confirm("Are you sure you want to delete?")) {
-			axios
-				.delete(`/api/writers/${this.props.match.params.writerId}`)
-				.then(() => {
-					this.setState({ redirectToAllWriters: true });
-				});
-		}
+		Swal.fire({
+			title: "Are you sure you want to delete this writer?",
+			text: "You won't be able to revert this!",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes, delete it!"
+		}).then(result => {
+			if (result.value) {
+				axios
+					.delete(`/api/writers/${this.props.match.params.writerId}`)
+					.then(() => {
+						this.setState({ redirectToAllWriters: true });
+					});
+				Swal.fire("Deleted!", "Your file has been deleted.", "success");
+			}
+		});
 	};
 
 	render() {

@@ -68,8 +68,8 @@ export default class Writers extends Component {
 		let alphList = lettersNoDuplicates.map(letter => {
 			return (
 				<Flex
-					className='alphList'
 					key={letter}
+					className='alphList'
 					flexDirection='column'
 					alignItems='flex-start'
 					m={2}>
@@ -122,7 +122,11 @@ export default class Writers extends Component {
 						<Box>
 							<strong>jump to letter: </strong>
 							{lettersNoDuplicates.map(letter => {
-								return <a href={`#${letter}`}>{letter} </a>;
+								return (
+									<a key={letter} href={`#${letter}`}>
+										{letter}{" "}
+									</a>
+								);
 							})}
 						</Box>
 						{alphList}

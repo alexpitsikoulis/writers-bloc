@@ -14,7 +14,8 @@ const WriterSchema = new mongoose.Schema({
 	bio: {
 		type: String,
 		lowercase: true
-	}
+	},
+	userId: mongoose.Types.ObjectId
 });
 
 const WriterCollection = mongoose.model("Writer", WriterSchema);

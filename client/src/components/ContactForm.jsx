@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 import { Button, Flex, Box } from "rebass";
 import { RingLoader } from "react-spinners";
 import { css } from "@emotion/core";
@@ -30,7 +31,7 @@ export default class ContactForm extends Component {
 		axios.post("/send", { name, email, message }).then(response => {
 			this.setState({ loading: false });
 			if (response.data.msg === "success") {
-				alert("Message Sent.");
+				Swal.fire("Message Sent.");
 				this.setState({
 					contact: {
 						name: "",
@@ -39,7 +40,7 @@ export default class ContactForm extends Component {
 					}
 				});
 			} else if (response.data.msg === "fail") {
-				alert("Message failed to send.");
+				Swal.fire("Message failed to send.");
 			}
 		});
 	}
