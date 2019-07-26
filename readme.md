@@ -1,31 +1,33 @@
-# mern-template-project
+# writer's bloc
 
-# Setup A New Project From This Template
+[Trello Board](https://trello.com/b/ebsXKEUZ/writers-bloc)
+[Deployed App](https://writersbloc.herokuapp.com/)
 
-If you are starting a new project do the following:
+## Summary
 
-1. copy/download this directory to where you new project is located and rename
-   it to the name of your project.
-1. change your directory (`cd`) into the copied project template
-1. `npm install`
-1. `npm run dev`
-1. Open a new browser window and navigate to the URL http://localhost:3000/
-    here you should see `hello world` displayed after page load
-    updates should show up here automatically
-1. see the `client/src` `readme.md` file for more information on the react project
+Writer's Bloc is a platform fo freelance writers to share their samples to be viewed by potential clients. Each writer has their own profile page with name, bio, email, a photo, and a link to a list of their writing samples. The samples page lists each sample that writer has posted and a page for each sample displays the name, type of writing, and the body of the sample.
 
-# Setup A New Project Without This Template
+## Technologies Used
 
-If you want to start a project without using this template directory do the
-following:
+- Node.js
+- Express
+- React
+- MongoDB
+- Mongoose
+- nodemailer
+- Rebass
+- react-spinners
 
+## In Future Versions
 
-1. `mkdir <project-name>`
-1. `cd <project-name>`
-1. `echo "# <project-name>" > readme.md`
-1. `git init`
-1. `git add readme.md `
-1. `git commit -m "init repo with readme.md"`
-1. `npm init`
-1. `mkdir models views controllers`
-1. `touch ./server.js`
+In future versions of the app I plan to implement user authentication to limit editing and deleting capabilities to the creator of the page. I also plan to extend the functionality of my nodemailer server to allow for a contact form on each writer's page that allows potential clients to message them.\
+
+## Wireframe and ERD Images
+
+![ERD Image]('images/ERD-image.png')
+![Wireframe Image 1]('images/image1.png')
+![Wireframe Image 2]('images/image2.png')
+![Wireframe Image 3]('images/image3.png')
+![Wireframe Image 4]('images/image4.png')
+![Wireframe Image 5]('images/image5.png')
+![Wireframe Image 6]('images/image6.png')
