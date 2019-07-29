@@ -41,7 +41,6 @@ transporter.verify((error, success) => {
 });
 
 app.post("/send", (req, res, next) => {
-	console.log(req);
 	var name = req.body.name;
 	var email = req.body.email;
 	var message = req.body.message;
