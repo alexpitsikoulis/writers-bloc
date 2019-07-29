@@ -129,17 +129,19 @@ export default class Writers extends Component {
 									</a>
 								);
 							})}
+							<Box>
+								<Button
+									onClick={this.handleToggleNewForm}
+									bg='white'
+									color='black'
+									marginTop='5vh'
+									width='10vw;'
+									fontSize='1vw;'>
+									add new writer
+								</Button>
+							</Box>
 						</Box>
 						{alphList}
-						<Button
-							onClick={this.handleToggleNewForm}
-							bg='white'
-							color='black'
-							marginTop='5vh'
-							width='10vw;'
-							fontSize='1vw;'>
-							add new writer
-						</Button>
 						<ScrollUpButton />
 					</Box>
 				)}
