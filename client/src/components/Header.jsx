@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Text, Flex, Box } from "rebass";
+import { Link } from "react-router-dom";
 
 export default class Header extends Component {
 	render() {
@@ -21,8 +22,9 @@ export default class Header extends Component {
 				<Box>
 					<nav>
 						<Flex justifyContent='space-around' alignItems='center'>
-							<a href='/writers'>writers</a>
-							<a href='/contact'>contact us</a>
+							<Link to='/writers'>writers</Link>
+							<Link to='/about'>about</Link>
+							<Link to='/contact'>contact us</Link>
 						</Flex>
 					</nav>
 				</Box>

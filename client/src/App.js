@@ -9,6 +9,7 @@ import Samples from "./components/Samples";
 import Sample from "./components/Sample";
 import Home from "./components/Home";
 import ContactForm from "./components/ContactForm";
+import About from "./components/About";
 
 function App() {
 	return (
@@ -24,6 +25,7 @@ function App() {
 					<Route path='/writers/:writerId' component={Writer} />
 					<Route path='/writers' component={Writers} />
 					<Route path='/contact' component={ContactForm} />
+					<Route path='/about' component={About} />
 					<Route exact path='/' component={Home} />
 				</Switch>
 				<Route path='/' component={Footer} />
